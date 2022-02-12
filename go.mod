@@ -3,6 +3,7 @@ module github.com/tanopanta/go-healthz-sample
 go 1.16
 
 require (
+	github.com/alexliesenfeld/health v0.6.0 // indirect
 	github.com/gin-gonic/gin v1.7.7 // indirect
 	github.com/go-playground/validator/v10 v10.10.0 // indirect
 	github.com/go-resty/resty/v2 v2.7.0 // indirect
