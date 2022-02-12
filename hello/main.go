@@ -48,57 +48,36 @@ func initHealthCheck() health.Checker {
 	return health.NewChecker(
 		health.WithCacheDuration(10*time.Second),
 		health.WithTimeout(30*time.Second),
-
-		health.WithPeriodicCheck(
-			15*time.Second,
-			3*time.Second,
-			health.Check{
-				Name: "w",
-				Check: func(ctx context.Context) error {
-					return worldCheck(ctx, "4000")
-				},
+		health.WithCheck(health.Check{
+			Name: "w",
+			Check: func(ctx context.Context) error {
+				return worldCheck(ctx, "4000")
 			},
-		),
-		health.WithPeriodicCheck(
-			15*time.Second,
-			3*time.Second,
-			health.Check{
-				Name: "o",
-				Check: func(ctx context.Context) error {
-					return worldCheck(ctx, "4001")
-				},
+		}),
+		health.WithCheck(health.Check{
+			Name: "o",
+			Check: func(ctx context.Context) error {
+				return worldCheck(ctx, "4001")
 			},
-		),
-		health.WithPeriodicCheck(
-			15*time.Second,
-			3*time.Second,
-			health.Check{
-				Name: "r",
-				Check: func(ctx context.Context) error {
-					return worldCheck(ctx, "4002")
-				},
+		}),
+		health.WithCheck(health.Check{
+			Name: "r",
+			Check: func(ctx context.Context) error {
+				return worldCheck(ctx, "4002")
 			},
-		),
-		health.WithPeriodicCheck(
-			15*time.Second,
-			3*time.Second,
-			health.Check{
-				Name: "l",
-				Check: func(ctx context.Context) error {
-					return worldCheck(ctx, "4003")
-				},
+		}),
+		health.WithCheck(health.Check{
+			Name: "l",
+			Check: func(ctx context.Context) error {
+				return worldCheck(ctx, "4003")
 			},
-		),
-		health.WithPeriodicCheck(
-			15*time.Second,
-			3*time.Second,
-			health.Check{
-				Name: "d",
-				Check: func(ctx context.Context) error {
-					return worldCheck(ctx, "4004")
-				},
+		}),
+		health.WithCheck(health.Check{
+			Name: "d",
+			Check: func(ctx context.Context) error {
+				return worldCheck(ctx, "4004")
 			},
-		),
+		}),
 		health.WithStatusListener(func(ctx context.Context, state health.CheckerState) {
 			log.Println(fmt.Sprintf("health status changed to %s", state.Status))
 		}),
